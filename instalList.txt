@@ -1,0 +1,21 @@
+zsh
+nerdfonts -- in computer AND terminal (Jetbrains)
+ohmyzsh
+git
+starship - gruvbox
+tmux - with config and plugins
+eza
+zoxide
+fzf
+bat
+yazi - kanawaga dragon theme
+tldr
+conda - get from miniconda
+micro - plugins - fzf - lsp runit filemanager (ive never really used these before) theme is twilight
+github-cli - sign in needed (easier to do in a browser)
+btop
+cmatrix
+wget
+7zip
+neofetch
+
