@@ -39,13 +39,13 @@ starship preset gruvbox-rainbow -o ~/.config/starship.toml
 
 #setting up micro (i dont like motions sorry guys)
 micro -plugin install fzf lsp filemanager runit
-cp ~/archlinuxsetup/ ~/.config/micro/plug/fzf/
+cp ~/archlinuxsetup/main.lua ~/.config/micro/plug/fzf/
 
 #setting up yazi theme
 cd ~/.config/yazi/flavors
 ya pack -a marcosvnmelo/kanagawa-dragon
 cd ..
-printf '[flavor]\nuse = "kanagawa-dragon"'
+printf '[flavor]\nuse = "kanagawa-dragon"' >> theme.toml
 cd
 
 #resetting tmux
