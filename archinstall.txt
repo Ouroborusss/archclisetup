@@ -1,0 +1,53 @@
+#updating arch
+sudo pacman -Syu 
+
+#mass download of necessary pkgs
+sudo pacman -S zsh starship eza zoxide tmux fzf tldr bat btop wget cmatrix git github-cli zip unzip fd neofetch
+
+#downloading yazi
+sudo pacman -S yazi ffmpeg p7zip jq poppler ripgrep imagemagick
+
+chsh -s $(which zsh)
+
+------restart shell---------
+
+#install ohmyzsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+#downloading jetbrains nerd font and applying it
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip \
+&& cd ~/.local/share/fonts \
+&& unzip JetBrainsMono.zip \
+&& rm JetBrainsMono.zip \
+&& fc-cache -fv
+
+#getting personal config files
+git clone https://github.com/Ouroborusss/archclisetup.git
+
+#getting tpm for tmux - trust its necessary
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+#initializing tmux
+tmux new
+
+#replacing current configs with better ones
+cp ~/archlinuxsetup/.zshrc ~/
+cp ~/archlinuxsetup/.tmux.conf ~/
+
+#setting starship theme
+starship preset gruvbox-rainbow -o ~/.config/starship.toml
+
+#setting up micro (i dont like motions sorry guys)
+micro -plugin install fzf lsp filemanager runit
+cp ~/archlinuxsetup/ ~/.config/micro/plug/fzf/
+
+#setting up yazi theme
+cd ~/.config/yazi/flavors
+ya pack -a marcosvnmelo/kanagawa-dragon
+cd ..
+printf '[flavor]\nuse = "kanagawa-dragon"'
+cd
+
+#resetting tmux
+tmux kill-session
+tmux new
